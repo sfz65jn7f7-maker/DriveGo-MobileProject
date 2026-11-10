@@ -1,0 +1,57 @@
+/** Chemins centralisés : un seul endroit à modifier si une route change. */
+export const ROUTES = {
+  index: '/',
+  onboarding: {
+    welcome: '/(onboarding)/welcome',
+    permissions: '/(onboarding)/permissions',
+  },
+  auth: {
+    login: '/(auth)/login',
+    register: '/(auth)/register',
+    otp: '/(auth)/otp',
+    chooseRole: '/(auth)/choose-role',
+    forgotPassword: '/(auth)/forgot-password',
+  },
+  passenger: {
+    home: '/(passenger)/home',
+    activity: '/(passenger)/activity',
+    carpool: '/(passenger)/carpool',
+    profile: '/(passenger)/profile',
+  },
+  driver: {
+    dashboard: '/(driver)/dashboard',
+    requests: '/(driver)/requests',
+    earnings: '/(driver)/earnings',
+    profile: '/(driver)/profile',
+    pendingValidation: '/pending-validation',
+    documents: '/(driver)/documents',
+  },
+  ride: {
+    searchDestination: '/ride/search-destination',
+    setPrice: '/ride/set-price',
+    offers: '/ride/offers',
+    tracking: '/ride/tracking',
+    inProgress: '/ride/in-progress',
+    completed: '/ride/completed',
+  },
+  carpool: {
+    search: '/carpool/search',
+    results: '/carpool/results',
+    publish: '/carpool/publish',
+    myTrips: '/carpool/my-trips',
+  },
+  settings: {
+    index: '/settings',
+    appearance: '/settings/appearance',
+    language: '/settings/language',
+    notifications: '/settings/notifications',
+    security: '/settings/security',
+    emergencyContacts: '/settings/emergency-contacts',
+    privacy: '/settings/privacy',
+    about: '/settings/about',
+    editProfile: '/settings/edit-profile',
+  },
+  notifications: '/notifications',
+  wallet: '/wallet',
+  help: '/help',
+} as const;

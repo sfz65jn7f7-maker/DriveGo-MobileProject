@@ -1,0 +1,53 @@
+{
+  "expo": {
+    "name": "Drive Go!",
+    "slug": "drive-go",
+    "version": "1.0.0",
+    "scheme": "drivego",
+    "orientation": "portrait",
+    "icon": "./assets/branding/icon.png",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/branding/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#FFFFFF"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.drivego.app",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "Drive Go! utilise votre position pour trouver des chauffeurs et suivre votre trajet."
+      }
+    },
+    "android": {
+      "package": "com.drivego.app",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/branding/adaptive-icon.png",
+        "backgroundColor": "#FFFFFF"
+      },
+      "permissions": [
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION"
+      ]
+    },
+    "web": {
+      "bundler": "metro",
+      "favicon": "./assets/branding/favicon.png"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-secure-store",
+      "expo-localization",
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "Drive Go! utilise votre position pour trouver des chauffeurs et suivre votre trajet."
+        }
+      ],
+      "expo-notifications",
+      "expo-splash-screen",
+      "expo-status-bar"
+    ]
+  }
+}
