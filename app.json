@@ -1,3 +1,4 @@
+
 {
   "expo": {
     "name": "Drive Go!",
@@ -7,12 +8,6 @@
     "orientation": "portrait",
     "icon": "./assets/branding/icon.png",
     "userInterfaceStyle": "automatic",
-    "newArchEnabled": true,
-    "splash": {
-      "image": "./assets/branding/splash-icon.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#FFFFFF"
-    },
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.drivego.app",
@@ -46,8 +41,18 @@
         }
       ],
       "expo-notifications",
-      "expo-splash-screen",
-      "expo-status-bar"
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/branding/splash-icon.png",
+          "imageWidth": 200,
+          "resizeMode": "contain",
+          "backgroundColor": "#FFFFFF"
+        }
+      ],
+      "expo-status-bar",
+      "expo-font"
     ]
   }
 }
+
