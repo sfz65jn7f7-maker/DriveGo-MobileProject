@@ -44,6 +44,33 @@ export const authService = {
     return code === '123456';
   },
 
+  /** Mock : envoie un code (toujours 123456) au numéro donné. */
+  async requestPasswordReset(phone: string): Promise<void> {
+    if (!config.useMocks) {
+      await apiRequest('/auth/forgot-password', { method: 'POST', body: { phone } });
+      return;
+    }
+    await delay(600);
+  },
+
+  async resetPassword(input: { phone: string; code: string; password: string }): Promise<void> {
+    if (!config.useMocks) {
+      await apiRequest('/auth/reset-password', { method: 'POST', body: input });
+      return;
+    }
+    await delay(600);
+    if (input.code !== '123456') throw new Error('invalidOtp');
+  },
+
+  async changePassword(input: { current: string; next: string }): Promise<void> {
+    if (!config.useMocks) {
+      await apiRequest('/auth/change-password', { method: 'POST', body: input });
+      return;
+    }
+    await delay(600);
+    if (input.current.length < 6) throw new Error('wrongPassword');
+  },
+
   async deleteAccount(): Promise<void> {
     await delay();
   },

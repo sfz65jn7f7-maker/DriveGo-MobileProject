@@ -25,6 +25,7 @@ export const ROUTES = {
     profile: '/(driver)/profile',
     pendingValidation: '/pending-validation',
     documents: '/(driver)/documents',
+    ride: '/driver-ride',
   },
   ride: {
     searchDestination: '/ride/search-destination',
@@ -33,12 +34,15 @@ export const ROUTES = {
     tracking: '/ride/tracking',
     inProgress: '/ride/in-progress',
     completed: '/ride/completed',
+    detail: (id: string) => `/ride/${id}` as const,
   },
   carpool: {
     search: '/carpool/search',
     results: '/carpool/results',
     publish: '/carpool/publish',
     myTrips: '/carpool/my-trips',
+    detail: (id: string) => `/carpool/${id}` as const,
+    detailPath: '/carpool/[id]',
   },
   settings: {
     index: '/settings',
@@ -51,6 +55,7 @@ export const ROUTES = {
     about: '/settings/about',
     editProfile: '/settings/edit-profile',
   },
+  chat: (id: string, name?: string) => ({ pathname: '/chat/[id]' as const, params: { id, name: name ?? '' } }),
   notifications: '/notifications',
   wallet: '/wallet',
   help: '/help',

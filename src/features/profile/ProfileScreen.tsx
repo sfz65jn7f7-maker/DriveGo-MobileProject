@@ -19,10 +19,13 @@ export function ProfileScreen() {
   const { t } = useTranslation();
   const router = useRouter();
   const user = useAuthStore((s) => s.user);
+  // Même source que la navigation : le rôle ACTIF (et non le rôle d'inscription)
+  const activeRole = useAuthStore((s) => s.activeRole);
   const { confirmLogout } = useLogout();
   if (!user) return null;
 
-  const isDriver = user.role === 'driver';
+  const role = activeRole ?? user.role;
+  const isDriver = role === 'driver';
 
   return (
     <Screen scroll edges={['top', 'left', 'right']}>
@@ -46,7 +49,7 @@ export function ProfileScreen() {
         <AppText variant="heading">{user.name}</AppText>
         <AppText color="textSecondary">{user.phone}</AppText>
         <View style={styles.badges}>
-          <Badge label={t(`roles.${user.role}`)} tone="primary" />
+          <Badge label={t(`roles.${role}`)} tone="primary" />
           {isDriver && user.driverStatus ? (
             <Badge
               label={t(`driverStatus.${user.driverStatus}`)}
@@ -61,6 +64,11 @@ export function ProfileScreen() {
         {isDriver ? (
           <SettingsRow icon="document-text-outline" label={t('profile.documents')} onPress={() => router.push(ROUTES.driver.documents)} />
         ) : null}
+        {!isDriver ? (
+          <SettingsRow icon="car-outline" label={t('carpoolTab.myTrips')} onPress={() => router.push(ROUTES.carpool.myTrips)} />
+        ) : (
+          <SettingsRow icon="car-outline" label={t('carpool.myPublished')} onPress={() => router.push(ROUTES.carpool.myTrips)} />
+        )}
         <SettingsRow icon="wallet-outline" label={t('profile.wallet')} onPress={() => router.push(ROUTES.wallet)} />
         <SettingsRow icon="notifications-outline" label={t('profile.notifications')} onPress={() => router.push(ROUTES.notifications)} />
         <SettingsRow icon="settings-outline" label={t('profile.settings')} onPress={() => router.push(ROUTES.settings.index)} />

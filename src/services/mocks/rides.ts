@@ -1,4 +1,5 @@
-import type { DriverOffer, Earnings, Ride, RideRequest, Place, Wallet } from '@/types';
+import type { DriverOffer, Earnings, Ride, RideRequest, Place, Transaction, Wallet } from '@/types';
+import { inDays, minutesAgo } from '@/utils/date';
 
 export const MOCK_PLACES: Place[] = [
   { id: 'p1', title: 'Morocco Mall', address: 'Bd de la Corniche, Casablanca', coords: { latitude: 33.5764, longitude: -7.7003 } },
@@ -42,15 +43,30 @@ export const MOCK_OFFERS: DriverOffer[] = [
 ];
 
 export const MOCK_RIDES: Ride[] = [
-  { id: 'r1', pickup: MOCK_PLACES[3], destination: MOCK_PLACES[1], price: 35, status: 'completed', createdAt: '2026-11-02T08:30:00Z', driverName: 'Karim B.' },
-  { id: 'r2', pickup: MOCK_PLACES[1], destination: MOCK_PLACES[2], price: 180, status: 'completed', createdAt: '2026-10-28T17:10:00Z', driverName: 'Soufiane M.' },
-  { id: 'r3', pickup: MOCK_PLACES[0], destination: MOCK_PLACES[4], price: 30, status: 'cancelled', createdAt: '2026-10-20T21:45:00Z' },
+  { id: 'r1', pickup: MOCK_PLACES[3], destination: MOCK_PLACES[1], price: 35, status: 'completed', createdAt: inDays(-1, 8, 30), driverName: 'Karim B.', driver: MOCK_OFFERS[0].driver, distanceKm: 5.6, durationMinutes: 14, rating: 5 },
+  { id: 'r2', pickup: MOCK_PLACES[1], destination: MOCK_PLACES[2], price: 180, status: 'completed', createdAt: inDays(-5, 17, 10), driverName: 'Soufiane M.', driver: MOCK_OFFERS[2].driver, distanceKm: 31.4, durationMinutes: 42, rating: 4 },
+  { id: 'r3', pickup: MOCK_PLACES[0], destination: MOCK_PLACES[4], price: 30, status: 'cancelled', createdAt: inDays(-12, 21, 45) },
 ];
 
 export const MOCK_REQUESTS: RideRequest[] = [
   { id: 'q1', passengerName: 'Yassine A.', pickup: MOCK_PLACES[3], destination: MOCK_PLACES[1], proposedPrice: 35, distanceKm: 4.2 },
   { id: 'q2', passengerName: 'Nadia K.', pickup: MOCK_PLACES[4], destination: MOCK_PLACES[0], proposedPrice: 25, distanceKm: 3.1 },
+  { id: 'q3', passengerName: 'Omar T.', pickup: MOCK_PLACES[1], destination: MOCK_PLACES[2], proposedPrice: 150, distanceKm: 28.7 },
 ];
 
-export const MOCK_EARNINGS: Earnings = { today: 320, week: 1840, month: 7260, trips: 112 };
+const DAILY = [210, 340, 180, 295, 410, 85, 320];
+export const MOCK_EARNINGS: Earnings = {
+  today: 320,
+  week: DAILY.reduce((a, b) => a + b, 0),
+  month: 7260,
+  trips: 112,
+  daily: DAILY.map((amount, i) => ({ date: inDays(i - 6, 12), amount })),
+};
+
+export const MOCK_TRANSACTIONS: Transaction[] = [
+  { id: 'tx1', type: 'ride', label: 'Twin Center → Gare Casa-Voyageurs', amount: -35, createdAt: inDays(-1, 8, 45) },
+  { id: 'tx2', type: 'topup', label: 'Recharge carte', amount: 200, createdAt: inDays(-3, 19, 2) },
+  { id: 'tx3', type: 'ride', label: 'Gare Casa-Voyageurs → Aéroport', amount: -180, createdAt: inDays(-5, 17, 55) },
+  { id: 'tx4', type: 'refund', label: 'Course annulée', amount: 30, createdAt: minutesAgo(60 * 24 * 12) },
+];
 export const MOCK_WALLET: Wallet = { balance: 250, currency: 'MAD' };

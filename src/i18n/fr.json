@@ -21,7 +21,8 @@
     "delete": "Supprimer",
     "goHome": "Retour à l'accueil",
     "notFoundTitle": "Page introuvable",
-    "notFoundMessage": "Cette page n'existe pas ou a été déplacée."
+    "notFoundMessage": "Cette page n'existe pas ou a été déplacée.",
+    "clear": "Effacer"
   },
   "tabs": {
     "home": "Accueil",
@@ -85,7 +86,10 @@
       "passwordMin": "6 caractères minimum",
       "nameMin": "Nom trop court",
       "invalidOtp": "Code incorrect",
-      "generic": "Opération impossible. Réessayez."
+      "generic": "Opération impossible. Réessayez.",
+      "passwordMismatch": "Les mots de passe ne correspondent pas",
+      "required": "Champ obligatoire",
+      "samePassword": "Choisissez un mot de passe différent de l’actuel"
     }
   },
   "roles": {
@@ -111,7 +115,9 @@
     "permissionTitle": "Localisation désactivée",
     "permissionMessage": "Activez la localisation pour voir les chauffeurs autour de vous.",
     "enableLocation": "Activer la localisation",
-    "openSettings": "Ouvrir les réglages"
+    "openSettings": "Ouvrir les réglages",
+    "activeRide": "Course en cours",
+    "activeRideHint": "Touchez pour revenir au suivi"
   },
   "driver": {
     "online": "En ligne",
@@ -119,7 +125,10 @@
     "goOnline": "Passer en ligne",
     "goOffline": "Passer hors ligne",
     "onlineHint": "Vous recevez les demandes proches de vous.",
-    "offlineHint": "Passez en ligne pour recevoir des demandes."
+    "offlineHint": "Passez en ligne pour recevoir des demandes.",
+    "resumeRide": "Reprendre la course en cours",
+    "seeRequests": "Voir les {{count}} demandes",
+    "seeRequests_one": "Voir la demande"
   },
   "carpoolTab": {
     "search": "Rechercher un trajet",
@@ -230,5 +239,337 @@
     "earnings": "Revenus",
     "requests": "Demandes",
     "documents": "Documents et véhicule"
+  },
+  "rideStatus": {
+    "searching": "Recherche",
+    "offers": "Offres reçues",
+    "driver_assigned": "Chauffeur assigné",
+    "arriving": "Chauffeur arrivé",
+    "in_progress": "En cours",
+    "completed": "Terminée",
+    "cancelled": "Annulée"
+  },
+  "ride": {
+    "pickup": "Départ",
+    "destination": "Destination",
+    "pickupPlaceholder": "Adresse de départ",
+    "currentLocation": "Ma position actuelle",
+    "suggestions": "Suggestions",
+    "noPlaces": "Aucun lieu trouvé",
+    "noPlacesHint": "Essayez un autre nom ou une autre adresse.",
+    "offerYourPrice": "Combien voulez-vous payer ?",
+    "suggested": "Prix conseillé : {{price}}",
+    "lowPriceWarning": "Prix bas : moins de chauffeurs risquent d’accepter.",
+    "findDriver": "Trouver un chauffeur",
+    "searchingDrivers": "Recherche de chauffeurs…",
+    "yourPrice": "Votre prix : {{price}}",
+    "offersCount": "{{count}} chauffeurs ont répondu",
+    "offersCount_one": "1 chauffeur a répondu",
+    "offersCount_zero": "Aucun chauffeur pour l’instant",
+    "bestPrice": "Meilleur prix",
+    "accept": "Accepter",
+    "changePrice": "Modifier mon prix",
+    "cancelRide": "Annuler la course",
+    "cancelTitle": "Annuler la course ?",
+    "cancelMessage": "La recherche de chauffeurs sera arrêtée.",
+    "cancelDriverMessage": "Votre chauffeur est déjà en route. Voulez-vous vraiment annuler ?",
+    "driverComing": "Votre chauffeur arrive dans {{minutes}} min",
+    "driverArrived": "Votre chauffeur est arrivé",
+    "driverArrivedHint": "Retrouvez-le au point de départ.",
+    "startRide": "Je suis à bord",
+    "call": "Appeler",
+    "message": "Envoyer un message",
+    "onTheWay": "En route vers {{place}}",
+    "arrivalIn": "Arrivée dans {{minutes}} min",
+    "inProgressBack": "La course est en cours. Vous pourrez quitter cet écran à l’arrivée.",
+    "shareTrip": "Partager mon trajet",
+    "shareMessage": "Je suis en route vers {{destination}} avec {{driver}} ({{plate}}) via Drive Go!. Arrivée prévue dans {{minutes}} min.",
+    "sosTitle": "Urgence",
+    "sosContact": "Appeler votre contact d’urgence {{name}} ?",
+    "sosPolice": "Appeler la police (19) ?",
+    "sosCall": "Appeler",
+    "arrived": "Vous êtes arrivé !",
+    "payDriver": "À régler au chauffeur",
+    "rateDriver": "Comment s’est passée la course avec {{name}} ?",
+    "rating1": "Très mauvais",
+    "rating2": "Mauvais",
+    "rating3": "Correct",
+    "rating4": "Bien",
+    "rating5": "Excellent !",
+    "commentPlaceholder": "Un commentaire ? (facultatif)",
+    "sendRating": "Envoyer ma note",
+    "price": "Prix",
+    "distance": "Distance",
+    "yourRating": "Votre note",
+    "rebook": "Refaire ce trajet",
+    "reportProblem": "Signaler un problème",
+    "searchPlaceholder": "Rechercher une adresse, un lieu, une ville…",
+    "locationForNearby": "Activez la localisation pour voir les lieux proches de vous.",
+    "searchError": "Recherche indisponible. Vérifiez votre connexion internet.",
+    "resultsNearby": "Résultats autour de vous",
+    "results": "Résultats",
+    "recent": "Récents",
+    "searchHint": "Tapez au moins 2 lettres : une adresse, un quartier, une ville (ex. « Oujda », « Gare Rabat-Agdal »).",
+    "enable": "Activer",
+    "choosePickup": "Destination : {{place}}. D’où partez-vous ?"
+  },
+  "activity": {
+    "rides": "Courses",
+    "noRides": "Aucune course pour l’instant",
+    "noRidesHint": "Vos courses passées apparaîtront ici.",
+    "bookRide": "Réserver une course",
+    "noCarpool": "Aucune réservation de covoiturage"
+  },
+  "requests": {
+    "empty": "Aucune demande pour l’instant",
+    "emptyHint": "Restez en ligne : les nouvelles demandes apparaîtront ici.",
+    "refresh": "Actualiser",
+    "counter": "Contre-offre",
+    "decline": "Refuser",
+    "counterTitle": "Proposer un autre prix",
+    "passengerOffers": "{{name}} propose {{price}}.",
+    "sendCounter": "Envoyer ma proposition"
+  },
+  "earnings": {
+    "today": "Aujourd’hui",
+    "week": "Semaine",
+    "month": "Mois",
+    "total": "Total encaissé",
+    "trips": "Courses (mois)",
+    "average": "Moyenne / course",
+    "last7Days": "7 derniers jours",
+    "payoutNote": "Les paiements par carte sont versés chaque lundi sur votre compte bancaire."
+  },
+  "driverRide": {
+    "toPickup": "Allez chercher {{name}}",
+    "atPickup": "Vous êtes au point de départ",
+    "done": "Course terminée",
+    "passengerOnBoard": "Passager à bord",
+    "navigate": "Ouvrir la navigation",
+    "collectCash": "Encaissez {{price}} auprès du passager.",
+    "finish": "Terminer",
+    "cancelMessage": "Le passager sera prévenu de l’annulation."
+  },
+  "carpool": {
+    "from": "Départ",
+    "to": "Arrivée",
+    "cityPlaceholder": "Ville",
+    "swap": "Inverser départ et arrivée",
+    "date": "Date",
+    "anyDate": "Toutes dates",
+    "today": "Aujourd’hui",
+    "tomorrow": "Demain",
+    "passengers": "Passagers",
+    "popular": "Trajets populaires",
+    "sortTime": "Départ le plus tôt",
+    "sortPrice": "Prix le plus bas",
+    "sortRating": "Mieux notés",
+    "resultsCount": "{{count}} trajets disponibles",
+    "resultsCount_one": "1 trajet disponible",
+    "noResults": "Aucun trajet trouvé",
+    "noResultsHint": "Essayez une autre date ou une ville proche.",
+    "editSearch": "Modifier la recherche",
+    "seatsLeft": "{{count}} places",
+    "seatsLeft_one": "1 place",
+    "full": "Complet",
+    "seatsCount": "{{count}} places",
+    "seatsCount_one": "1 place",
+    "driverTrips": "{{count}} trajets effectués",
+    "driverTrips_one": "1 trajet effectué",
+    "rulesTitle": "Règles du trajet",
+    "seats": "Places",
+    "total": "Total",
+    "book": "Réserver {{count}} places",
+    "book_one": "Réserver 1 place",
+    "bookedTitle": "Réservation confirmée",
+    "bookedMessage": "Votre trajet {{from}} → {{to}} est réservé.",
+    "notEnoughSeats": "Il n’y a plus assez de places.",
+    "yourTrip": "C’est votre trajet.",
+    "myBookings": "Mes réservations",
+    "myPublished": "Mes trajets publiés",
+    "noBookings": "Aucune réservation",
+    "noPublished": "Aucun trajet publié",
+    "noPublishedHint": "Partagez vos places libres et réduisez vos frais.",
+    "cancelBooking": "Annuler la réservation",
+    "cancelBookingMessage": "Votre place sera libérée pour un autre passager.",
+    "time": "Heure",
+    "pricePerSeat": "Prix / place (MAD)",
+    "seatsOffered": "Places proposées",
+    "publishButton": "Publier le trajet",
+    "publishedTitle": "Trajet publié",
+    "publishedMessage": "Les passagers peuvent maintenant réserver.",
+    "booking": {
+      "confirmed": "Confirmée",
+      "cancelled": "Annulée"
+    },
+    "rules": {
+      "noSmoking": "Non-fumeur",
+      "noPets": "Pas d’animaux",
+      "pets": "Animaux acceptés",
+      "lightLuggage": "Bagages légers",
+      "music": "Musique bienvenue"
+    },
+    "errors": {
+      "city": "Saisissez une ville",
+      "time": "Format HH:MM (ex. 08:30)",
+      "price": "Entre 10 et 1000 MAD",
+      "sameCity": "Le départ et l’arrivée doivent être différents",
+      "past": "Cette heure est déjà passée"
+    }
+  },
+  "wallet": {
+    "balance": "Solde disponible",
+    "topUp": "Recharger",
+    "topUpHint": "Choisissez le montant à ajouter.",
+    "topUpConfirm": "Recharger {{amount}}",
+    "topUpDone": "{{amount}} ajoutés à votre solde.",
+    "topUpLabel": "Recharge du portefeuille",
+    "cardMasked": "Carte •••• 4242",
+    "history": "Historique"
+  },
+  "notifications": {
+    "markAll": "Tout lire",
+    "empty": "Aucune notification",
+    "unread": "Non lue",
+    "now": "À l’instant",
+    "minutesAgo": "Il y a {{count}} min",
+    "hoursAgo": "Il y a {{count}} h",
+    "unreadA11y": "{{count}} notifications non lues",
+    "unreadA11y_one": "1 notification non lue"
+  },
+  "chat": {
+    "placeholder": "Votre message…",
+    "send": "Envoyer",
+    "quick1": "J’arrive",
+    "quick2": "Je suis devant",
+    "quick3": "Merci !"
+  },
+  "documents": {
+    "progress": "{{done}} / {{total}} documents validés",
+    "progressHint": "Tous les documents doivent être validés pour recevoir des courses.",
+    "updated": "Mis à jour le {{date}}",
+    "notSent": "Pas encore envoyé",
+    "upload": "Envoyer une photo",
+    "sentTitle": "Document envoyé",
+    "sentMessage": "Nous le vérifions sous 48 h.",
+    "vehicle": "Véhicule",
+    "noVehicle": "Aucun véhicule enregistré.",
+    "types": {
+      "license": "Permis de conduire",
+      "registration": "Carte grise",
+      "insurance": "Assurance",
+      "idCard": "Carte d’identité (CIN)"
+    },
+    "status": {
+      "missing": "Manquant",
+      "pending": "En vérification",
+      "approved": "Validé",
+      "rejected": "Refusé"
+    }
+  },
+  "forgot": {
+    "phoneIntro": "Saisissez votre numéro : nous vous enverrons un code pour choisir un nouveau mot de passe.",
+    "sendCode": "Recevoir le code",
+    "newPassword": "Nouveau mot de passe",
+    "confirmPassword": "Confirmer le mot de passe",
+    "reset": "Réinitialiser",
+    "doneTitle": "Mot de passe modifié",
+    "doneMessage": "Vous pouvez maintenant vous connecter avec votre nouveau mot de passe.",
+    "devHint": "Test : le code est 123456"
+  },
+  "security": {
+    "current": "Mot de passe actuel",
+    "hint": "6 caractères minimum.",
+    "changed": "Mot de passe modifié",
+    "wrongPassword": "Mot de passe actuel incorrect",
+    "more": "Plus de sécurité",
+    "devices": "Appareils connectés",
+    "thisDevice": "Cet appareil"
+  },
+  "privacy": {
+    "intro": "Choisissez ce que vous partagez. Vos données ne sont jamais vendues.",
+    "sharing": "Partage",
+    "locationDuringRide": "Partager ma position seulement pendant une course",
+    "profilePhoto": "Afficher ma photo aux autres utilisateurs",
+    "analytics": "Statistiques d’utilisation anonymes",
+    "yourData": "Vos données",
+    "export": "Télécharger mes données",
+    "exportTitle": "Demande envoyée",
+    "exportMessage": "Vous recevrez une copie de vos données par e-mail sous 72 h.",
+    "policy": "Politique de confidentialité"
+  },
+  "contacts": {
+    "intro": "Ces personnes peuvent être appelées en un geste avec le bouton SOS pendant une course.",
+    "empty": "Aucun contact d’urgence",
+    "emptyHint": "Ajoutez un proche de confiance.",
+    "add": "Ajouter un contact",
+    "max": "Maximum {{count}} contacts.",
+    "removeTitle": "Supprimer le contact ?",
+    "removeMessage": "{{name}} ne sera plus contacté en cas d’urgence."
+  },
+  "help": {
+    "search": "Rechercher une question",
+    "faqTitle": "Questions fréquentes",
+    "noResult": "Aucune question ne correspond.",
+    "contact": "Nous contacter",
+    "call": "Appeler le support",
+    "email": "E-mail",
+    "hours": "Support disponible 7j/7, de 8 h à 22 h.",
+    "faq": {
+      "price": {
+        "q": "Comment fonctionne le prix ?",
+        "a": "Vous proposez votre prix, les chauffeurs acceptent ou font une contre-offre. Vous choisissez l’offre qui vous convient."
+      },
+      "cancel": {
+        "q": "Puis-je annuler une course ?",
+        "a": "Oui, tant que le passager n’est pas à bord. Une annulation tardive peut être signalée à l’autre partie."
+      },
+      "payment": {
+        "q": "Comment payer ?",
+        "a": "En espèces au chauffeur ou par carte via votre portefeuille. Choisissez votre moyen par défaut dans Paramètres."
+      },
+      "safety": {
+        "q": "Quelles mesures de sécurité ?",
+        "a": "Chauffeurs vérifiés, partage de trajet en direct, bouton SOS et contacts d’urgence."
+      },
+      "carpool": {
+        "q": "Comment réserver un covoiturage ?",
+        "a": "Onglet Covoiturage → Rechercher un trajet, choisissez le nombre de places puis réservez."
+      },
+      "lost": {
+        "q": "J’ai oublié un objet",
+        "a": "Ouvrez la course dans Activité puis « Signaler un problème » : nous contactons le chauffeur."
+      },
+      "becomeDriver": {
+        "q": "Comment devenir chauffeur ?",
+        "a": "Inscrivez-vous en tant que chauffeur et envoyez vos documents. La validation prend en général 48 h."
+      },
+      "documents": {
+        "q": "Quels documents fournir ?",
+        "a": "Permis de conduire, carte grise, assurance en cours de validité et CIN."
+      },
+      "counter": {
+        "q": "Qu’est-ce qu’une contre-offre ?",
+        "a": "Si le prix proposé est trop bas, vous pouvez proposer un autre montant au passager."
+      },
+      "earnings": {
+        "q": "Quand suis-je payé ?",
+        "a": "Les espèces sont encaissées directement. Les paiements par carte sont versés chaque lundi."
+      }
+    }
+  },
+  "alerts": {
+    "offersTitle": "Offres reçues 🚕",
+    "driverNearTitle": "Votre chauffeur arrive",
+    "driverNearBody": "{{name}} sera là dans environ 1 minute. Préparez-vous !",
+    "driverArrivedTitle": "Votre chauffeur est arrivé 📍",
+    "driverArrivedBody": "{{name}} vous attend au point de départ ({{plate}}).",
+    "almostTitle": "Arrivée imminente",
+    "almostBody": "Vous arrivez bientôt à {{place}}.",
+    "newRequestTitle": "Nouvelle demande de course",
+    "newRequestBody": "{{name}} propose {{price}} depuis {{place}}.",
+    "test": "Tester une alerte",
+    "testBody": "Ceci est un test : son, vibration et notification fonctionnent.",
+    "testHint": "Si vous n’entendez rien, vérifiez le volume, le mode silencieux et l’autorisation des notifications."
   }
 }

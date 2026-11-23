@@ -1,5 +1,3 @@
-import { View } from 'react-native';
-
 /** Web : l'appli est centrée dans une colonne de largeur téléphone, hauteur = zone visible. */
 export function AppFrame({ children }: { children: React.ReactNode }) {
   return (

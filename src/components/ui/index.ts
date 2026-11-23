@@ -6,3 +6,6 @@ export { Card } from './Card';
 export { Avatar } from './Avatar';
 export { Badge } from './Badge';
 export { AppModal } from './AppModal';
+export { Chip, ChipGroup, Segmented } from './Chip';
+export { RatingStars } from './RatingStars';
+export { Skeleton, ListSkeleton } from './Skeleton';

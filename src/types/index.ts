@@ -66,6 +66,10 @@ export type Ride = {
   status: RideStatus;
   createdAt: string;
   driverName?: string;
+  driver?: DriverSummary;
+  distanceKm?: number;
+  durationMinutes?: number;
+  rating?: number;
 };
 
 export type RideRequest = {
@@ -93,9 +97,65 @@ export type Earnings = {
   week: number;
   month: number;
   trips: number;
+  /** 7 derniers jours, du plus ancien au plus récent */
+  daily: { date: string; amount: number }[];
 };
 
 export type Wallet = {
   balance: number;
   currency: 'MAD';
 };
+
+export type CarpoolBooking = {
+  id: string;
+  trip: CarpoolTrip;
+  seats: number;
+  status: 'confirmed' | 'cancelled';
+};
+
+export type PublishTripInput = {
+  from: string;
+  to: string;
+  departureAt: string;
+  seats: number;
+  pricePerSeat: number;
+  rules: string[];
+};
+
+export type TransactionType = 'ride' | 'topup' | 'refund' | 'carpool' | 'payout';
+
+export type Transaction = {
+  id: string;
+  type: TransactionType;
+  label: string;
+  /** positif = crédit, négatif = débit */
+  amount: number;
+  createdAt: string;
+};
+
+export type AppNotification = {
+  id: string;
+  type: 'ride' | 'carpool' | 'promo' | 'system';
+  title: string;
+  body: string;
+  createdAt: string;
+  read: boolean;
+};
+
+export type ChatMessage = {
+  id: string;
+  from: 'me' | 'them';
+  text: string;
+  createdAt: string;
+};
+
+export type DocumentType = 'license' | 'registration' | 'insurance' | 'idCard';
+export type DocumentStatus = 'missing' | 'pending' | 'approved' | 'rejected';
+
+export type DriverDocument = {
+  type: DocumentType;
+  status: DocumentStatus;
+  updatedAt?: string;
+};
+
+export type EmergencyContact = { id: string; name: string; phone: string };

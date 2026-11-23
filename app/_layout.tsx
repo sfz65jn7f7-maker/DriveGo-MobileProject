@@ -5,17 +5,17 @@ import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { QueryClientProvider } from '@tanstack/react-query';
 import { ThemeProvider, useTheme } from '@/theme';
 import { useAuthStore } from '@/features/auth/auth.store';
 import { useSettingsStore } from '@/features/settings/settings.store';
 import { AppFrame } from '@/components/common/AppFrame';
+import { InAppAlert } from '@/components/common/InAppAlert';
+import { useNotificationSetup } from '@/features/notifications/useNotificationSetup';
+import { queryClient } from '@/services/queryClient';
 
 void SplashScreen.preventAutoHideAsync();
 
-const queryClient = new QueryClient({
-  defaultOptions: { queries: { retry: 1, staleTime: 30_000 } },
-});
 
 /** UNIQUE point de décision du rôle : le groupe de pages affiché dépend de l'état d'authentification. */
 function RootNavigator() {
@@ -28,6 +28,8 @@ function RootNavigator() {
   useEffect(() => {
     void useAuthStore.getState().hydrate();
   }, []);
+  // Canaux Android, permission, et ouverture de l'écran lié quand on touche une notification
+  useNotificationSetup();
 
   const ready = authReady && settingsReady;
   useEffect(() => {
@@ -59,6 +61,7 @@ function RootNavigator() {
 
         <Stack.Protected guard={isDriver}>
           <Stack.Screen name="(driver)" />
+          <Stack.Screen name="driver-ride" options={{ gestureEnabled: false }} />
         </Stack.Protected>
 
         <Stack.Protected guard={isDriverPending}>
@@ -75,6 +78,8 @@ function RootNavigator() {
           <Stack.Screen name="settings" />
         </Stack.Protected>
       </Stack>
+      {/* Bannière d'alerte affichée par-dessus tous les écrans */}
+      <InAppAlert />
     </>
   );
 }

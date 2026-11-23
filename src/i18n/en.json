@@ -21,7 +21,8 @@
     "delete": "Delete",
     "goHome": "Back to home",
     "notFoundTitle": "Page not found",
-    "notFoundMessage": "This page doesn't exist or has been moved."
+    "notFoundMessage": "This page doesn't exist or has been moved.",
+    "clear": "Clear"
   },
   "tabs": {
     "home": "Home",
@@ -85,7 +86,10 @@
       "passwordMin": "At least 6 characters",
       "nameMin": "Name too short",
       "invalidOtp": "Incorrect code",
-      "generic": "Something went wrong. Try again."
+      "generic": "Something went wrong. Try again.",
+      "passwordMismatch": "Passwords do not match",
+      "required": "Required field",
+      "samePassword": "Choose a password different from the current one"
     }
   },
   "roles": {
@@ -111,7 +115,9 @@
     "permissionTitle": "Location is off",
     "permissionMessage": "Turn on location to see drivers around you.",
     "enableLocation": "Enable location",
-    "openSettings": "Open settings"
+    "openSettings": "Open settings",
+    "activeRide": "Ride in progress",
+    "activeRideHint": "Tap to go back to tracking"
   },
   "driver": {
     "online": "Online",
@@ -119,7 +125,10 @@
     "goOnline": "Go online",
     "goOffline": "Go offline",
     "onlineHint": "You receive requests near you.",
-    "offlineHint": "Go online to receive requests."
+    "offlineHint": "Go online to receive requests.",
+    "resumeRide": "Resume current ride",
+    "seeRequests": "See {{count}} requests",
+    "seeRequests_one": "See the request"
   },
   "carpoolTab": {
     "search": "Find a trip",
@@ -230,5 +239,337 @@
     "earnings": "Earnings",
     "requests": "Requests",
     "documents": "Documents & vehicle"
+  },
+  "rideStatus": {
+    "searching": "Searching",
+    "offers": "Offers received",
+    "driver_assigned": "Driver assigned",
+    "arriving": "Driver arrived",
+    "in_progress": "In progress",
+    "completed": "Completed",
+    "cancelled": "Cancelled"
+  },
+  "ride": {
+    "pickup": "Pickup",
+    "destination": "Destination",
+    "pickupPlaceholder": "Pickup address",
+    "currentLocation": "My current location",
+    "suggestions": "Suggestions",
+    "noPlaces": "No place found",
+    "noPlacesHint": "Try another name or address.",
+    "offerYourPrice": "How much do you want to pay?",
+    "suggested": "Suggested price: {{price}}",
+    "lowPriceWarning": "Low price: fewer drivers may accept.",
+    "findDriver": "Find a driver",
+    "searchingDrivers": "Looking for drivers…",
+    "yourPrice": "Your price: {{price}}",
+    "offersCount": "{{count}} drivers responded",
+    "offersCount_one": "1 driver responded",
+    "offersCount_zero": "No driver yet",
+    "bestPrice": "Best price",
+    "accept": "Accept",
+    "changePrice": "Change my price",
+    "cancelRide": "Cancel ride",
+    "cancelTitle": "Cancel the ride?",
+    "cancelMessage": "The driver search will stop.",
+    "cancelDriverMessage": "Your driver is already on the way. Do you really want to cancel?",
+    "driverComing": "Your driver arrives in {{minutes}} min",
+    "driverArrived": "Your driver has arrived",
+    "driverArrivedHint": "Meet them at the pickup point.",
+    "startRide": "I’m in the car",
+    "call": "Call",
+    "message": "Send a message",
+    "onTheWay": "On the way to {{place}}",
+    "arrivalIn": "Arrival in {{minutes}} min",
+    "inProgressBack": "Your ride is in progress. You can leave this screen when you arrive.",
+    "shareTrip": "Share my trip",
+    "shareMessage": "I’m on my way to {{destination}} with {{driver}} ({{plate}}) on Drive Go!. Expected arrival in {{minutes}} min.",
+    "sosTitle": "Emergency",
+    "sosContact": "Call your emergency contact {{name}}?",
+    "sosPolice": "Call the police (19)?",
+    "sosCall": "Call",
+    "arrived": "You have arrived!",
+    "payDriver": "To pay the driver",
+    "rateDriver": "How was your ride with {{name}}?",
+    "rating1": "Very bad",
+    "rating2": "Bad",
+    "rating3": "Okay",
+    "rating4": "Good",
+    "rating5": "Excellent!",
+    "commentPlaceholder": "Any comment? (optional)",
+    "sendRating": "Send my rating",
+    "price": "Price",
+    "distance": "Distance",
+    "yourRating": "Your rating",
+    "rebook": "Book this trip again",
+    "reportProblem": "Report a problem",
+    "searchPlaceholder": "Search an address, place or city…",
+    "locationForNearby": "Enable location to see places near you.",
+    "searchError": "Search unavailable. Check your internet connection.",
+    "resultsNearby": "Results around you",
+    "results": "Results",
+    "recent": "Recent",
+    "searchHint": "Type at least 2 letters: an address, a neighbourhood, a city (e.g. “Oujda”, “Rabat-Agdal station”).",
+    "enable": "Enable",
+    "choosePickup": "Destination: {{place}}. Where are you leaving from?"
+  },
+  "activity": {
+    "rides": "Rides",
+    "noRides": "No rides yet",
+    "noRidesHint": "Your past rides will appear here.",
+    "bookRide": "Book a ride",
+    "noCarpool": "No carpool bookings"
+  },
+  "requests": {
+    "empty": "No requests yet",
+    "emptyHint": "Stay online: new requests will appear here.",
+    "refresh": "Refresh",
+    "counter": "Counter-offer",
+    "decline": "Decline",
+    "counterTitle": "Offer another price",
+    "passengerOffers": "{{name}} offers {{price}}.",
+    "sendCounter": "Send my offer"
+  },
+  "earnings": {
+    "today": "Today",
+    "week": "Week",
+    "month": "Month",
+    "total": "Total earned",
+    "trips": "Rides (month)",
+    "average": "Average / ride",
+    "last7Days": "Last 7 days",
+    "payoutNote": "Card payments are paid out to your bank account every Monday."
+  },
+  "driverRide": {
+    "toPickup": "Go pick up {{name}}",
+    "atPickup": "You are at the pickup point",
+    "done": "Ride completed",
+    "passengerOnBoard": "Passenger on board",
+    "navigate": "Open navigation",
+    "collectCash": "Collect {{price}} from the passenger.",
+    "finish": "Finish",
+    "cancelMessage": "The passenger will be notified of the cancellation."
+  },
+  "carpool": {
+    "from": "From",
+    "to": "To",
+    "cityPlaceholder": "City",
+    "swap": "Swap from and to",
+    "date": "Date",
+    "anyDate": "Any date",
+    "today": "Today",
+    "tomorrow": "Tomorrow",
+    "passengers": "Passengers",
+    "popular": "Popular trips",
+    "sortTime": "Earliest",
+    "sortPrice": "Lowest price",
+    "sortRating": "Top rated",
+    "resultsCount": "{{count}} trips available",
+    "resultsCount_one": "1 trip available",
+    "noResults": "No trip found",
+    "noResultsHint": "Try another date or a nearby city.",
+    "editSearch": "Edit search",
+    "seatsLeft": "{{count}} seats",
+    "seatsLeft_one": "1 seat",
+    "full": "Full",
+    "seatsCount": "{{count}} seats",
+    "seatsCount_one": "1 seat",
+    "driverTrips": "{{count}} trips completed",
+    "driverTrips_one": "1 trip completed",
+    "rulesTitle": "Trip rules",
+    "seats": "Seats",
+    "total": "Total",
+    "book": "Book {{count}} seats",
+    "book_one": "Book 1 seat",
+    "bookedTitle": "Booking confirmed",
+    "bookedMessage": "Your trip {{from}} → {{to}} is booked.",
+    "notEnoughSeats": "Not enough seats left.",
+    "yourTrip": "This is your trip.",
+    "myBookings": "My bookings",
+    "myPublished": "My published trips",
+    "noBookings": "No bookings",
+    "noPublished": "No published trips",
+    "noPublishedHint": "Share your empty seats and cut your costs.",
+    "cancelBooking": "Cancel booking",
+    "cancelBookingMessage": "Your seat will be released for another passenger.",
+    "time": "Time",
+    "pricePerSeat": "Price / seat (MAD)",
+    "seatsOffered": "Seats offered",
+    "publishButton": "Publish trip",
+    "publishedTitle": "Trip published",
+    "publishedMessage": "Passengers can now book.",
+    "booking": {
+      "confirmed": "Confirmed",
+      "cancelled": "Cancelled"
+    },
+    "rules": {
+      "noSmoking": "No smoking",
+      "noPets": "No pets",
+      "pets": "Pets allowed",
+      "lightLuggage": "Light luggage",
+      "music": "Music welcome"
+    },
+    "errors": {
+      "city": "Enter a city",
+      "time": "Format HH:MM (e.g. 08:30)",
+      "price": "Between 10 and 1000 MAD",
+      "sameCity": "From and to must be different",
+      "past": "This time has already passed"
+    }
+  },
+  "wallet": {
+    "balance": "Available balance",
+    "topUp": "Top up",
+    "topUpHint": "Choose the amount to add.",
+    "topUpConfirm": "Top up {{amount}}",
+    "topUpDone": "{{amount}} added to your balance.",
+    "topUpLabel": "Wallet top-up",
+    "cardMasked": "Card •••• 4242",
+    "history": "History"
+  },
+  "notifications": {
+    "markAll": "Mark all read",
+    "empty": "No notifications",
+    "unread": "Unread",
+    "now": "Just now",
+    "minutesAgo": "{{count}} min ago",
+    "hoursAgo": "{{count}} h ago",
+    "unreadA11y": "{{count}} unread notifications",
+    "unreadA11y_one": "1 unread notification"
+  },
+  "chat": {
+    "placeholder": "Your message…",
+    "send": "Send",
+    "quick1": "On my way",
+    "quick2": "I’m outside",
+    "quick3": "Thanks!"
+  },
+  "documents": {
+    "progress": "{{done}} / {{total}} documents approved",
+    "progressHint": "All documents must be approved to receive rides.",
+    "updated": "Updated on {{date}}",
+    "notSent": "Not sent yet",
+    "upload": "Upload a photo",
+    "sentTitle": "Document sent",
+    "sentMessage": "We will review it within 48 h.",
+    "vehicle": "Vehicle",
+    "noVehicle": "No vehicle registered.",
+    "types": {
+      "license": "Driving licence",
+      "registration": "Vehicle registration",
+      "insurance": "Insurance",
+      "idCard": "ID card (CIN)"
+    },
+    "status": {
+      "missing": "Missing",
+      "pending": "Under review",
+      "approved": "Approved",
+      "rejected": "Rejected"
+    }
+  },
+  "forgot": {
+    "phoneIntro": "Enter your number: we will send you a code to choose a new password.",
+    "sendCode": "Get the code",
+    "newPassword": "New password",
+    "confirmPassword": "Confirm password",
+    "reset": "Reset",
+    "doneTitle": "Password changed",
+    "doneMessage": "You can now log in with your new password.",
+    "devHint": "Test: the code is 123456"
+  },
+  "security": {
+    "current": "Current password",
+    "hint": "At least 6 characters.",
+    "changed": "Password changed",
+    "wrongPassword": "Current password is incorrect",
+    "more": "More security",
+    "devices": "Connected devices",
+    "thisDevice": "This device"
+  },
+  "privacy": {
+    "intro": "Choose what you share. Your data is never sold.",
+    "sharing": "Sharing",
+    "locationDuringRide": "Share my location only during a ride",
+    "profilePhoto": "Show my photo to other users",
+    "analytics": "Anonymous usage statistics",
+    "yourData": "Your data",
+    "export": "Download my data",
+    "exportTitle": "Request sent",
+    "exportMessage": "You will receive a copy of your data by email within 72 h.",
+    "policy": "Privacy policy"
+  },
+  "contacts": {
+    "intro": "These people can be called in one tap with the SOS button during a ride.",
+    "empty": "No emergency contacts",
+    "emptyHint": "Add someone you trust.",
+    "add": "Add a contact",
+    "max": "Maximum {{count}} contacts.",
+    "removeTitle": "Remove contact?",
+    "removeMessage": "{{name}} will no longer be contacted in an emergency."
+  },
+  "help": {
+    "search": "Search a question",
+    "faqTitle": "Frequently asked questions",
+    "noResult": "No matching question.",
+    "contact": "Contact us",
+    "call": "Call support",
+    "email": "Email",
+    "hours": "Support available 7 days a week, 8 am to 10 pm.",
+    "faq": {
+      "price": {
+        "q": "How does pricing work?",
+        "a": "You offer your price, drivers accept or counter-offer. You choose the offer that suits you."
+      },
+      "cancel": {
+        "q": "Can I cancel a ride?",
+        "a": "Yes, as long as the passenger is not on board. Late cancellations may be reported to the other party."
+      },
+      "payment": {
+        "q": "How do I pay?",
+        "a": "Cash to the driver or by card through your wallet. Choose your default method in Settings."
+      },
+      "safety": {
+        "q": "What safety measures are there?",
+        "a": "Verified drivers, live trip sharing, SOS button and emergency contacts."
+      },
+      "carpool": {
+        "q": "How do I book a carpool?",
+        "a": "Carpool tab → Search a trip, choose the number of seats then book."
+      },
+      "lost": {
+        "q": "I forgot an item",
+        "a": "Open the ride in Activity then “Report a problem”: we will contact the driver."
+      },
+      "becomeDriver": {
+        "q": "How do I become a driver?",
+        "a": "Sign up as a driver and upload your documents. Approval usually takes 48 h."
+      },
+      "documents": {
+        "q": "Which documents are required?",
+        "a": "Driving licence, vehicle registration, valid insurance and ID card."
+      },
+      "counter": {
+        "q": "What is a counter-offer?",
+        "a": "If the offered price is too low, you can propose another amount to the passenger."
+      },
+      "earnings": {
+        "q": "When do I get paid?",
+        "a": "Cash is collected directly. Card payments are paid out every Monday."
+      }
+    }
+  },
+  "alerts": {
+    "offersTitle": "Offers received 🚕",
+    "driverNearTitle": "Your driver is coming",
+    "driverNearBody": "{{name}} will be there in about 1 minute. Get ready!",
+    "driverArrivedTitle": "Your driver has arrived 📍",
+    "driverArrivedBody": "{{name}} is waiting at the pickup point ({{plate}}).",
+    "almostTitle": "Almost there",
+    "almostBody": "You will soon arrive at {{place}}.",
+    "newRequestTitle": "New ride request",
+    "newRequestBody": "{{name}} offers {{price}} from {{place}}.",
+    "test": "Test an alert",
+    "testBody": "This is a test: sound, vibration and notification work.",
+    "testHint": "If you hear nothing, check the volume, silent mode and notification permission."
   }
 }

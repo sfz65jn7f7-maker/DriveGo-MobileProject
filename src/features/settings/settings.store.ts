@@ -3,6 +3,7 @@ import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 import { applyLanguage } from '@/i18n';
 import type { Language } from '@/i18n';
+import type { EmergencyContact } from '@/types';
 
 export type ThemeMode = 'light' | 'dark' | 'system';
 export type NavigationApp = 'builtin' | 'google' | 'waze';
@@ -23,6 +24,15 @@ type DriverPrefs = {
   backgroundTracking: boolean;
 };
 
+type PrivacyPrefs = {
+  /** Partager la position uniquement pendant une course */
+  shareLocationDuringRide: boolean;
+  /** Statistiques d'usage anonymes */
+  analytics: boolean;
+  /** Afficher la photo de profil aux chauffeurs / passagers */
+  showProfilePhoto: boolean;
+};
+
 type SettingsState = {
   themeMode: ThemeMode;
   language: Language;
@@ -33,6 +43,8 @@ type SettingsState = {
   autoShareTrip: boolean;
   defaultPayment: PaymentMethod;
   onboardingDone: boolean;
+  emergencyContacts: EmergencyContact[];
+  privacy: PrivacyPrefs;
   /** true quand les préférences ont fini d'être lues depuis le stockage */
   isHydrated: boolean;
 
@@ -43,6 +55,9 @@ type SettingsState = {
   setAutoShareTrip: (value: boolean) => void;
   setDefaultPayment: (value: PaymentMethod) => void;
   setOnboardingDone: (value: boolean) => void;
+  addEmergencyContact: (contact: Omit<EmergencyContact, 'id'>) => void;
+  removeEmergencyContact: (id: string) => void;
+  setPrivacy: (key: keyof PrivacyPrefs, value: boolean) => void;
 };
 
 export const useSettingsStore = create<SettingsState>()(
@@ -62,6 +77,8 @@ export const useSettingsStore = create<SettingsState>()(
       autoShareTrip: false,
       defaultPayment: 'cash',
       onboardingDone: false,
+      emergencyContacts: [],
+      privacy: { shareLocationDuringRide: true, analytics: true, showProfilePhoto: true },
       isHydrated: false,
 
       setThemeMode: (themeMode) => set({ themeMode }),
@@ -76,6 +93,11 @@ export const useSettingsStore = create<SettingsState>()(
       setAutoShareTrip: (autoShareTrip) => set({ autoShareTrip }),
       setDefaultPayment: (defaultPayment) => set({ defaultPayment }),
       setOnboardingDone: (onboardingDone) => set({ onboardingDone }),
+      addEmergencyContact: (contact) =>
+        set((s) => ({ emergencyContacts: [...s.emergencyContacts, { ...contact, id: `c_${Date.now()}` }] })),
+      removeEmergencyContact: (id) =>
+        set((s) => ({ emergencyContacts: s.emergencyContacts.filter((c) => c.id !== id) })),
+      setPrivacy: (key, value) => set((s) => ({ privacy: { ...s.privacy, [key]: value } })),
     }),
     {
       name: 'drivego-settings',
@@ -88,6 +110,8 @@ export const useSettingsStore = create<SettingsState>()(
         autoShareTrip: s.autoShareTrip,
         defaultPayment: s.defaultPayment,
         onboardingDone: s.onboardingDone,
+        emergencyContacts: s.emergencyContacts,
+        privacy: s.privacy,
       }),
       onRehydrateStorage: () => (state) => {
         if (state) applyLanguage(state.language);

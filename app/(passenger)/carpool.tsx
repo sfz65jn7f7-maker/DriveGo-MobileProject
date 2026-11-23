@@ -16,6 +16,7 @@ export default function CarpoolTab() {
       <ScreenHeader title={t('tabs.carpool')} showBack={false} showAvatar />
       <Button label={t('carpoolTab.search')} icon="search" onPress={() => router.push(ROUTES.carpool.search)} />
       <Button label={t('carpoolTab.myTrips')} icon="bookmark-outline" variant="secondary" onPress={() => router.push(ROUTES.carpool.myTrips)} />
+      <Button label={t('carpoolTab.publish')} icon="add-circle-outline" variant="ghost" onPress={() => router.push(ROUTES.carpool.publish)} />
     </Screen>
   );
 }
